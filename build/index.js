@@ -23,82 +23,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 /**
- * Retrieves the translation of text.
+ * Retrieves the translation of text using the i18n package.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 
 
 /**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
+ * React hook that provides block properties such as class names.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 
 
+/**
+ * WordPress component package for user interface elements.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-components/
+ */
+
 
 /**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
+ * Loads CSS styles for the block in the editor.
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * The edit function renders the block structure within the Gutenberg editor.
+ * This includes customizable content like RichText, image uploads, and Inspector controls.
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ * @param {Object} attributes - Block attributes, including text, images, and button text.
+ * @param {Function} setAttributes - Function to update block attributes.
  *
- * @return {Element} Element to render.
+ * @return {Element} JSX element representing the block in the editor.
  */
+function Edit({
+  attributes,
+  setAttributes
+}) {
+  // Destructure block attributes
+  const {
+    title,
+    description,
+    buttonText,
+    backgroundImage,
+    logoImage
+  } = attributes;
 
-function Edit() {
+  /**
+   * Prevents the default form submission behavior to avoid unwanted page refresh.
+   *
+   * @param {Event} event - The form submission event.
+   */
+  const preventDefaultSubmission = event => {
+    event.preventDefault();
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
     className: "block-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background Image")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => setAttributes({
+      backgroundImage: media.url
+    }),
+    allowedTypes: ["image"],
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open,
+      variant: "secondary"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Select Background Image"))
+  }), backgroundImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: backgroundImage,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background Image Preview"),
+    style: {
+      width: "100%",
+      marginTop: "10px"
+    } // Simple preview styling
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => setAttributes({
+      logoImage: media.url
+    }),
+    allowedTypes: ["image"],
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open,
+      variant: "secondary"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Select Logo Image"))
+  }), logoImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: logoImage,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Logo Preview"),
+    style: {
+      width: "100%",
+      marginTop: "10px"
+    } // Preview styling
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "main__logo"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
-    alt: "logo"
+    src: logoImage,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Logo")
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "main__hero-image"
+    className: "main__hero-image",
+    style: {
+      backgroundImage: `url(${backgroundImage})`
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "main__hero-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content__heading"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Publish your podcasts ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "everywhere."))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h1",
+    value: title,
+    onChange: newTitle => setAttributes({
+      title: newTitle
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter Title")
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content__description"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Upload your audio to Pod with a single click. We\u2019ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: description,
+    onChange: newDescription => setAttributes({
+      description: newDescription
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter Description")
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content__request-form-brand"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    id: "hero_content__request-form"
+    id: "hero_content__request-form",
+    onSubmit: preventDefaultSubmission
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     className: "request-form__email",
     type: "email",
-    placeholder: "Email Address"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "submit"
-  }, "Request Access")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Email Address")
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "button",
+    value: buttonText,
+    onChange: newButtonText => setAttributes({
+      buttonText: newButtonText
+    }),
+    multiline: false
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content__brands-logo"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
-    alt: "spotify"
+    alt: "Spotify"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
-    alt: "apple"
+    alt: "Apple Podcasts"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
-    alt: "google"
+    alt: "Google Podcasts"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
-    alt: "pocket"
+    alt: "Pocket Casts"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
-    alt: "dot-patterns"
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Dot Patterns")
   })));
 }
 
@@ -170,71 +255,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 
 /**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
+ * Retrieves the translation of text using the i18n package.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+
+
+/**
+ * React hook used to mark the block wrapper element.
+ * It provides the necessary props, such as class names.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 
 
 /**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
+ * This function describes how the block's attributes are combined into
+ * the final markup. It defines the structure of the block when it's
+ * rendered on the front end.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
  *
- * @return {Element} Element to render.
+ * @param {Object} attributes - Block attributes that are used to build the final output.
+ * @return {Element} JSX element representing the saved state of the block.
  */
-function Save() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
-    className: "block-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "main__logo"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
-    alt: "logo"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "main__hero-image"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "main__hero-content"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero-content__heading"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Publish your podcasts ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "everywhere."))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero-content__description"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Upload your audio to Pod with a single click. We\u2019ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero-content__request-form-brand"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    id: "hero_content__request-form"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    className: "request-form__email",
-    type: "email",
-    placeholder: "Email Address"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "submit"
-  }, "Request Access")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero-content__brands-logo"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
-    alt: "spotify"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
-    alt: "apple-podcast"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
-    alt: "google-podcasts"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
-    alt: "pocket-casts"
-  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
-    alt: "dot-patterns"
-  })));
+function Save({
+  attributes
+}) {
+  // Destructure block attributes for easier access
+  const {
+    title,
+    description,
+    buttonText,
+    backgroundImage
+  } = attributes;
+  return (
+    // Use block props to mark the block wrapper, including class names
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(),
+      className: "block-container"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "main__logo"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Logo')
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "main__hero-image",
+      style: {
+        backgroundImage: `url(${backgroundImage})`
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "main__hero-content"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "hero-content__heading"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "h1",
+      value: title
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "hero-content__description"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "p",
+      value: description
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "hero-content__request-form-brand"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+      id: "hero_content__request-form"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      className: "request-form__email",
+      type: "email",
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Email Address')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "button",
+      value: buttonText
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "hero-content__brands-logo"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Spotify')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Apple Podcasts')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Google Podcasts')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pocket Casts')
+    }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dot Patterns')
+    })))
+  );
 }
 
 /***/ }),
@@ -319,7 +436,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","default":"Publish your podcasts everywhere."},"description":{"type":"string","default":"Upload your audio to Pod with a single click..."},"buttonText":{"type":"string","default":"Request Access"}},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","default":"Publish your podcasts everywhere."},"description":{"type":"string","default":"Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!"},"buttonText":{"type":"string","default":"Request Access"},"backgroundImage":{"type":"string","default":"http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg"},"logoImage":{"type":"string","default":"http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg"}},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

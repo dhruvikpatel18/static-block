@@ -2,19 +2,48 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
 /**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+* Main block container style.
+* This defines the primary styles for the block, including font, background color, padding, and minimum height.
+*/
 .block-container {
   font-family: "Chivo", sans-serif;
   font-size: 16px;
   background-color: hsl(224, 35%, 11%);
   padding: 30px;
   min-height: 800px;
+  /**
+  * Main content section within the block.
+  * This sets the structure for the main area, including width, margins, and flex display.
+  */
+  /**
+  * Styles for the hero image.
+  * The hero image is displayed as a background with specific positioning and size.
+  */
+  /**
+  * Hero content section within the block.
+  * This section contains the heading, description, and other related content.
+  */
+  /**
+  * Heading styles for the hero content.
+  * Includes font styles, text transformation, and line height.
+  */
+  /**
+  * Description styles within the hero content.
+  * Defines the margin and text styles.
+  */
+  /**
+  * Styles for the form used in the block.
+  * This section includes input fields and buttons.
+  */
+  /**
+  * Styles for the brand logos within the hero content.
+  * This section contains images of associated brands.
+  */
+  /**
+  * Footer styles for the block.
+  * Positions the footer and sets the width for the footer image.
+  */
 }
-
 .block-container main {
   width: 80%;
   margin: 6.3rem auto 0;
@@ -24,9 +53,7 @@
   flex-direction: column;
   position: relative;
 }
-
 .block-container .main__hero-image {
-  background-image: url("http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg");
   background-repeat: no-repeat;
   background-size: auto;
   min-height: 640px;
@@ -35,19 +62,16 @@
   top: 3%;
   left: 35.4%;
 }
-
 .block-container .main__hero-content {
   transform: translate(0%, 19%);
   max-width: 723px;
   height: 509px;
   background-color: hsl(224, 35%, 11%);
 }
-
 .block-container .hero-content__heading {
   margin-top: 5.5rem;
   width: 100%;
 }
-
 .block-container .hero-content__heading h1 {
   text-transform: uppercase;
   font-size: 3.25rem;
@@ -55,29 +79,24 @@
   color: hsl(157, 74%, 62%);
   line-height: 3.87rem;
 }
-
 .block-container .hero-content__heading span {
   color: #fff;
 }
-
 .block-container .hero-content__description {
   margin-top: 1.5rem;
   width: 445px;
 }
-
 .block-container .hero-content__description p {
   font-size: 1.12rem;
   line-height: 1.75rem;
   font-weight: 300;
   color: hsl(225, 40%, 83%);
 }
-
 .block-container form {
   margin-top: 2.5rem;
   position: relative;
   width: 427px;
 }
-
 .block-container form input {
   width: 100%;
   height: 3.5rem;
@@ -91,7 +110,6 @@
   color: #fff;
   outline: none;
 }
-
 .block-container form button {
   width: 162px;
   height: 2.875rem;
@@ -107,28 +125,28 @@
   top: 5px;
   transition: background-color 0.5s ease-in;
 }
-
 .block-container button:hover {
   background-color: #b3ffe2;
 }
-
 .block-container .hero-content__brands-logo {
   margin-top: 2.82rem;
   display: flex;
   justify-content: space-between;
   width: 536px;
 }
-
 .block-container footer {
   position: absolute;
   right: 0;
   transform: translate(-40%, -70%);
 }
-
 .block-container footer img {
   width: 80%;
 }
 
+/**
+ * Editor-specific styles.
+ * This section controls the layout within the block editor, allowing the block to take its own width.
+ */
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
   max-width: none !important;
   margin-left: auto;

@@ -23,6 +23,14 @@
 		"buttonText": {
 			"type": "string",
 			"default": "Request Access"
+		},
+		"backgroundImage": {
+			"type": "string",
+			"default": "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg"
+		},
+		"logoImage": {
+			"type": "string",
+			"default": "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg"
 		}
 	  },
 	"textdomain": "static-block",

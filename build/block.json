@@ -18,11 +18,19 @@
     },
     "description": {
       "type": "string",
-      "default": "Upload your audio to Pod with a single click..."
+      "default": "Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!"
     },
     "buttonText": {
       "type": "string",
       "default": "Request Access"
+    },
+    "backgroundImage": {
+      "type": "string",
+      "default": "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg"
+    },
+    "logoImage": {
+      "type": "string",
+      "default": "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg"
     }
   },
   "textdomain": "static-block",
