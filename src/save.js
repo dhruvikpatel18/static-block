@@ -15,10 +15,46 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function Save() {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Static Block – hello from the saved content!' }
-		</p>
+	  <div {...useBlockProps.save()} className="block-container">
+		<main>
+		  <div className="main__logo">
+			<img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg" alt="logo" />
+		  </div>
+		  <div className="main__hero-image" />
+  
+		  <div className="main__hero-content">
+			<div className="hero-content__heading">
+			  <h1>Publish your podcasts <span>everywhere.</span></h1>
+			</div>
+			<div className="hero-content__description">
+			  <p>
+				Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!
+			  </p>
+			</div>
+			<div className="hero-content__request-form-brand">
+			  <form id="hero_content__request-form">
+				<input
+				  className="request-form__email"
+				  type="email"
+				  placeholder="Email Address"
+				/>
+				<button type="submit">Request Access</button>
+			  </form>
+			  <div className="hero-content__brands-logo">
+				<img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg" alt="spotify" />
+				<img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg" alt="apple-podcast" />
+				<img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg" alt="google-podcasts" />
+				<img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg" alt="pocket-casts" />
+			  </div>
+			</div>
+		  </div>
+		</main>
+  
+		<footer>
+		  <img src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg" alt="dot-patterns" />
+		</footer>
+	  </div>
 	);
-}
+  }

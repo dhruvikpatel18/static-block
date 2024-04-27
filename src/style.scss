@@ -5,8 +5,130 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-static-block {
-	background-color: #21759b;
+
+ .block-container {
+	font-family: "Chivo", sans-serif;
+	font-size: 16px;
+	background-color: hsl(224, 35%, 11%);
+	padding: 30px;
+	min-height: 800px;
+  }
+  
+  .block-container main {
+	width: 80%;
+	margin: 6.3rem auto 0;
+	min-height: 692px;
+	max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+  }
+  
+  .block-container .main__hero-image {
+	background-image: url("http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg");
+	background-repeat: no-repeat;
+	background-size: auto;
+	min-height: 640px;
+	width: 80%;
+	position: absolute;
+	top: 3%;
+	left: 35.4%;
+  }
+  
+  .block-container .main__hero-content {
+	transform: translate(0%, 19%);
+	max-width: 723px;
+	height: 509px;
+	background-color: hsl(224, 35%, 11%);
+  }
+  
+  .block-container .hero-content__heading {
+	margin-top: 5.5rem;
+	width: 100%;
+  }
+  
+  .block-container .hero-content__heading h1 {
+	text-transform: uppercase;
+	font-size: 3.25rem;
+	font-weight: 300;
+	color: hsl(157, 74%, 62%);
+	line-height: 3.87rem;
+  }
+  
+  .block-container .hero-content__heading span {
 	color: #fff;
-	padding: 2px;
-}
+  }
+  
+  .block-container .hero-content__description {
+	margin-top: 1.5rem;
+	width: 445px;
+  }
+  
+  .block-container .hero-content__description p {
+	font-size: 1.12rem;
+	line-height: 1.75rem;
+	font-weight: 300;
+	color: hsl(225, 40%, 83%);
+  }
+  
+  .block-container form {
+	margin-top: 2.5rem;
+	position: relative;
+	width: 427px;
+  }
+  
+  .block-container form input {
+	width: 100%;
+	height: 3.5rem;
+	border-radius: 1.75rem;
+	background-color: hsl(225, 26%, 23%);
+	border: none;
+	padding-left: 2rem;
+	font-size: 0.87rem;
+	font-weight: 700;
+	line-height: 1.75rem;
+	color: #fff;
+	outline: none;
+  }
+  
+  .block-container form button {
+	width: 162px;
+	height: 2.875rem;
+	border-radius: 1.75rem;
+	border: none;
+	background-color: hsl(157, 74%, 62%);
+	color: hsl(224, 35%, 11%);
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+	position: absolute;
+	right: -30px;
+	top: 5px;
+	transition: background-color 0.5s ease-in;
+  }
+  
+  .block-container button:hover {
+	background-color: #b3ffe2;
+  }
+  
+  .block-container .hero-content__brands-logo {
+	margin-top: 2.82rem;
+	display: flex;
+	justify-content: space-between;
+	width: 536px;
+  }
+  
+  .block-container footer {
+	position: absolute;
+	right: 0;
+	transform: translate(-40%, -70%);
+  }
+  
+  .block-container footer img {
+	width: 80%;
+  }
+  .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+	max-width: none !important;  // Allows the block to take its own width
+	margin-left: auto;
+	margin-right: auto;
+  }

@@ -18,7 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 /**
  * Retrieves the translation of text.
@@ -33,6 +35,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
 
 
 /**
@@ -51,10 +54,52 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
+
 function Edit() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Static Block – hello from the editor!', 'static-block'));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
+    className: "block-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__logo"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
+    alt: "logo"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__hero-image"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__hero-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__heading"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Publish your podcasts ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "everywhere."))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__description"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Upload your audio to Pod with a single click. We\u2019ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__request-form-brand"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    id: "hero_content__request-form"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    className: "request-form__email",
+    type: "email",
+    placeholder: "Email Address"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "submit"
+  }, "Request Access")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__brands-logo"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
+    alt: "spotify"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
+    alt: "apple"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
+    alt: "google"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
+    alt: "pocket"
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
+    alt: "dot-patterns"
+  })));
 }
 
 /***/ }),
@@ -121,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */   "default": () => (/* binding */ Save)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -145,10 +190,51 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-function save() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, 'Static Block – hello from the saved content!');
+function Save() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
+    className: "block-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__logo"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
+    alt: "logo"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__hero-image"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main__hero-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__heading"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Publish your podcasts ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "everywhere."))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__description"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Upload your audio to Pod with a single click. We\u2019ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__request-form-brand"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    id: "hero_content__request-form"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    className: "request-form__email",
+    type: "email",
+    placeholder: "Email Address"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "submit"
+  }, "Request Access")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content__brands-logo"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
+    alt: "spotify"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
+    alt: "apple-podcast"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
+    alt: "google-podcasts"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
+    alt: "pocket-casts"
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
+    alt: "dot-patterns"
+  })));
 }
 
 /***/ }),
@@ -207,6 +293,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -223,7 +319,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","default":"Publish your podcasts everywhere."},"description":{"type":"string","default":"Upload your audio to Pod with a single click..."},"buttonText":{"type":"string","default":"Request Access"}},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

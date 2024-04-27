@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Static Block
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       A custom Gutenberg static block for publishing frontend view of 'pod request' page with fully customizable from backend UI.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
