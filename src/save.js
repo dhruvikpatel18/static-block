@@ -13,6 +13,18 @@ import { __ } from "@wordpress/i18n";
  */
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
+// Get the plugin URL from localized data
+const PLUGIN_URL = StaticBlockData.pluginUrl;
+
+// Re-define the image paths using the dynamic plugin URL
+const imagePaths = {
+    spotify: `${PLUGIN_URL}/assets/desktop/spotify.svg`,
+    applePodcasts: `${PLUGIN_URL}/assets/desktop/apple-podcast.svg`,
+    googlePodcasts: `${PLUGIN_URL}/assets/desktop/google-podcasts.svg`,
+    pocketCasts: `${PLUGIN_URL}/assets/desktop/pocket-casts.svg`,
+    bgPatternDots: `${PLUGIN_URL}/assets/desktop/bg-pattern-dots.svg`,
+};
+
 /**
  * This function describes how the block's attributes are combined into
  * the final markup. It defines the structure of the block when it's
@@ -25,7 +37,7 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
  */
 export default function Save({ attributes }) {
   // Destructure block attributes for easier access
-  const { title, description, buttonText, backgroundImage } = attributes;
+  const { title, description, buttonText, backgroundImage, logoImage } = attributes;
 
   return (
     // Use block props to mark the block wrapper, including class names
@@ -34,10 +46,7 @@ export default function Save({ attributes }) {
       <main>
         {/* Display the logo in the main section */}
         <div className="main__logo">
-          <img
-            src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg"
-            alt={__('Logo')}
-          />
+          <img src={logoImage} alt={__("Logo")} />
         </div>
 
         {/* Background image with dynamic content */}
@@ -82,19 +91,19 @@ export default function Save({ attributes }) {
             {/* Display logos of associated brands */}
             <div className="hero-content__brands-logo">
               <img
-                src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg"
+                src={imagePaths.spotify}
                 alt={__('Spotify')}
               />
               <img
-                src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg"
+                src={imagePaths.applePodcasts}
                 alt={__('Apple Podcasts')}
               />
               <img
-                src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg"
+                src={imagePaths.googlePodcasts}
                 alt={__('Google Podcasts')}
               />
               <img
-                src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg"
+                src={imagePaths.pocketCasts}
                 alt={__('Pocket Casts')}
               />
             </div>
@@ -105,7 +114,7 @@ export default function Save({ attributes }) {
       {/* Footer section */}
       <footer>
         <img
-          src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg"
+          src={imagePaths.bgPatternDots}
           alt={__('Dot Patterns')}
         />
       </footer>

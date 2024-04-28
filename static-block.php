@@ -17,6 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+function get_static_block_plugin_url() {
+    return plugins_url('', __FILE__); // Gets the plugin's base URL
+}
+
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
@@ -26,5 +30,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function create_block_static_block_block_init() {
 	register_block_type( __DIR__ . '/build' );
+
+	// Enqueue the script and pass the plugin's base URL
+    $script_handle = 'static-block-script'; // script's handle
+    wp_register_script($script_handle, plugins_url('/build/index.js', __FILE__), array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'));
+    wp_localize_script($script_handle, 'StaticBlockData', array(
+        'pluginUrl' => get_static_block_plugin_url(), // Pass the plugin URL to JavaScript
+    ));
+    wp_enqueue_script($script_handle);
 }
 add_action( 'init', 'create_block_static_block_block_init' );
+

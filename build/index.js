@@ -50,6 +50,18 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+// Get the plugin URL from localized data
+const PLUGIN_URL = StaticBlockData.pluginUrl;
+
+// Re-define the image paths using the dynamic plugin URL
+const imagePaths = {
+  spotify: `${PLUGIN_URL}/assets/desktop/spotify.svg`,
+  applePodcasts: `${PLUGIN_URL}/assets/desktop/apple-podcast.svg`,
+  googlePodcasts: `${PLUGIN_URL}/assets/desktop/google-podcasts.svg`,
+  pocketCasts: `${PLUGIN_URL}/assets/desktop/pocket-casts.svg`,
+  bgPatternDots: `${PLUGIN_URL}/assets/desktop/bg-pattern-dots.svg`
+};
+
 /**
  * The edit function renders the block structure within the Gutenberg editor.
  * This includes customizable content like RichText, image uploads, and Inspector controls.
@@ -170,19 +182,19 @@ function Edit({
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content__brands-logo"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
-    alt: "Spotify"
+    src: imagePaths.spotify,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Spotify')
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
-    alt: "Apple Podcasts"
+    src: imagePaths.applePodcasts,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Apple Podcasts')
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
-    alt: "Google Podcasts"
+    src: imagePaths.googlePodcasts,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Google Podcasts')
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
-    alt: "Pocket Casts"
+    src: imagePaths.pocketCasts,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pocket Casts')
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
+    src: imagePaths.bgPatternDots,
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Dot Patterns")
   })));
 }
@@ -225,12 +237,40 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Use the dynamic plugin URL provided by PHP
+const PLUGIN_URL = StaticBlockData.pluginUrl;
+
+// Define block attributes with dynamic paths
+const blockAttributes = {
+  title: {
+    type: 'string',
+    default: 'Publish your podcasts everywhere.'
+  },
+  description: {
+    type: 'string',
+    default: 'Upload your audio to Pod with a single click...'
+  },
+  buttonText: {
+    type: 'string',
+    default: 'Request Access'
+  },
+  backgroundImage: {
+    type: 'string',
+    default: `${PLUGIN_URL}/assets/desktop/image-host.jpg` // Dynamic path
+  },
+  logoImage: {
+    type: 'string',
+    default: `${PLUGIN_URL}/assets/desktop/logo.svg` // Dynamic path
+  }
+};
+
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
+  attributes: blockAttributes,
   /**
    * @see ./edit.js
    */
@@ -275,6 +315,18 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+// Get the plugin URL from localized data
+const PLUGIN_URL = StaticBlockData.pluginUrl;
+
+// Re-define the image paths using the dynamic plugin URL
+const imagePaths = {
+  spotify: `${PLUGIN_URL}/assets/desktop/spotify.svg`,
+  applePodcasts: `${PLUGIN_URL}/assets/desktop/apple-podcast.svg`,
+  googlePodcasts: `${PLUGIN_URL}/assets/desktop/google-podcasts.svg`,
+  pocketCasts: `${PLUGIN_URL}/assets/desktop/pocket-casts.svg`,
+  bgPatternDots: `${PLUGIN_URL}/assets/desktop/bg-pattern-dots.svg`
+};
+
 /**
  * This function describes how the block's attributes are combined into
  * the final markup. It defines the structure of the block when it's
@@ -293,7 +345,8 @@ function Save({
     title,
     description,
     buttonText,
-    backgroundImage
+    backgroundImage,
+    logoImage
   } = attributes;
   return (
     // Use block props to mark the block wrapper, including class names
@@ -303,8 +356,8 @@ function Save({
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "main__logo"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg",
-      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Logo')
+      src: logoImage,
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Logo")
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "main__hero-image",
       style: {
@@ -336,19 +389,19 @@ function Save({
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "hero-content__brands-logo"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg",
+      src: imagePaths.spotify,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Spotify')
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg",
+      src: imagePaths.applePodcasts,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Apple Podcasts')
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg",
+      src: imagePaths.googlePodcasts,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Google Podcasts')
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg",
+      src: imagePaths.pocketCasts,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pocket Casts')
     }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: "http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg",
+      src: imagePaths.bgPatternDots,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dot Patterns')
     })))
   );
@@ -436,7 +489,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","default":"Publish your podcasts everywhere."},"description":{"type":"string","default":"Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts, and more!"},"buttonText":{"type":"string","default":"Request Access"},"backgroundImage":{"type":"string","default":"http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/image-host.jpg"},"logoImage":{"type":"string","default":"http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/logo.svg"}},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/static-block","version":"0.1.0","title":"Static Block","category":"common","icon":"podio","description":"A custom Gutenberg static block for publishing frontend view of \'pod request\' page with fully customizable from backend UI.","example":{},"supports":{"html":false},"textdomain":"static-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

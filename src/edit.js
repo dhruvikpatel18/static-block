@@ -32,6 +32,19 @@ import { PanelBody, Button } from "@wordpress/components";
  */
 import "./editor.scss";
 
+// Get the plugin URL from localized data
+const PLUGIN_URL = StaticBlockData.pluginUrl;
+
+// Re-define the image paths using the dynamic plugin URL
+const imagePaths = {
+    spotify: `${PLUGIN_URL}/assets/desktop/spotify.svg`,
+    applePodcasts: `${PLUGIN_URL}/assets/desktop/apple-podcast.svg`,
+    googlePodcasts: `${PLUGIN_URL}/assets/desktop/google-podcasts.svg`,
+    pocketCasts: `${PLUGIN_URL}/assets/desktop/pocket-casts.svg`,
+    bgPatternDots: `${PLUGIN_URL}/assets/desktop/bg-pattern-dots.svg`,
+};
+
+
 /**
  * The edit function renders the block structure within the Gutenberg editor.
  * This includes customizable content like RichText, image uploads, and Inspector controls.
@@ -169,20 +182,20 @@ export default function Edit({ attributes, setAttributes }) {
 						{/* Displaying brand logos */}
 						<div className="hero-content__brands-logo">
 							<img
-								src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/spotify.svg"
-								alt="Spotify"
+								src={imagePaths.spotify}
+								alt={__('Spotify')}
 							/>
 							<img
-								src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/apple-podcast.svg"
-								alt="Apple Podcasts"
+								src={imagePaths.applePodcasts}
+								alt={__('Apple Podcasts')}
 							/>
 							<img
-								src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/google-podcasts.svg"
-								alt="Google Podcasts"
+								src={imagePaths.googlePodcasts}
+								alt={__('Google Podcasts')}
 							/>
 							<img
-								src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/pocket-casts.svg"
-								alt="Pocket Casts"
+								src={imagePaths.pocketCasts}
+								alt={__('Pocket Casts')}
 							/>
 						</div>
 					</div>
@@ -192,7 +205,7 @@ export default function Edit({ attributes, setAttributes }) {
 			{/* Footer with decorative elements */}
 			<footer>
 				<img
-					src="http://localhost:1234/wp-test/wp-content/plugins/static-block/assets/desktop/bg-pattern-dots.svg"
+					src={imagePaths.bgPatternDots}
 					alt={__("Dot Patterns")}
 				/>
 			</footer>
